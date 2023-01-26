@@ -7,5 +7,52 @@
         "profileName": "",
         "buildScript": ""
     },
-    "configurations": []
+    "configurations": [
+        {
+            "name": "Development Build",
+            "outputFolder": "Android",
+            "artifactName": "app-loader-demo.apk",
+            "buildTarget": 13,
+            "developmentBuild": true,
+            "autoConnectProfiler": false,
+            "deepProfiling": false,
+            "scriptDebugging": false,
+            "waitForManagedDebugger": false,
+            "scriptsOnlyBuild": false,
+            "compressionMethod": 2,
+            "il2CppCodeGeneration": 0,
+            "scenes": [
+                {
+                    "name": "Preloader",
+                    "path": "Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Preloader.unity",
+                    "guid": "146549346d5a7754291fedd43c5ce12d"
+                }
+            ],
+            "defines": [
+                "DEBUG_BURNING_LAB_SDK",
+                "DEBUG_PROJECT_BUILDER"
+            ],
+            "standaloneSubtarget": 0,
+            "standaloneCopyPdbFiles": false,
+            "standaloneCreateVisualStudioSolution": false,
+            "standaloneCreateXCodeProject": false,
+            "standaloneXCodeBuildConfig": 0,
+            "androidSubtarget": 0,
+            "androidETC2Fallback": 0,
+            "exportAsAndroidStudioProject": false,
+            "androidCreateSymbols": 0,
+            "symlinkSources": false,
+            "buildAndroidAppBundle": false,
+            "webGLTextureSubtarget": 0,
+            "webGlCodeOptimization": 0,
+            "iosXCodeBuildConfig": 0,
+            "companyName": "Burning-Lab",
+            "productName": "AppLoder",
+            "productVersion": "1.0",
+            "applicationIdentifier": "com.burninglab.apploader",
+            "androidBundleVersionCode": 1,
+            "androidMinimumSdkVersion": 0,
+            "androidTargetSdkVersion": 0
+        }
+    ]
 }
