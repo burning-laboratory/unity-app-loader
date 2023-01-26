@@ -1,0 +1,16 @@
+{
+    "name": "Burning-Lab.AppLoader.Editor",
+    "rootNamespace": "",
+    "references": [
+        "GUID:7741ee21f91ba0d49b5ab929c7817412"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

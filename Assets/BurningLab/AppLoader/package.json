@@ -1,8 +1,8 @@
 ﻿{
-  "name": "com.burning-lab.packagename",
+  "name": "com.burning-lab.apploader",
   "version": "0.0.1",
-  "displayName": "Package Display Name",
-  "description": "Package description",
+  "displayName": "App Loader",
+  "description": "Application loading pipeline controller for unity projects.",
   "unity": "2021.3",
   "documentationUrl": "",
   "changelogUrl": "",
@@ -12,7 +12,7 @@
     "url": ""
   },
   "keywords": [
-
+    "Unity", "App", "Loader"
   ],
   "scripts": {
     "build": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/ReadmeBuilder.js",

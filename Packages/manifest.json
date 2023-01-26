@@ -1,6 +1,7 @@
 {
   "dependencies": {
-    "com.burning-lab.projectbuilder": "0.1.6-exp",
+    "com.burning-lab.projectbuilder": "0.1.11-exp",
+    "com.mackysoft.serializereference-extensions": "1.1.7",
     "com.unity.collab-proxy": "1.17.2",
     "com.unity.feature.2d": "1.0.0",
     "com.unity.ide.rider": "3.0.15",
@@ -9,6 +10,7 @@
     "com.unity.test-framework": "1.1.31",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.6.4",
+    "com.unity.toolchain.win-x86_64-linux-x86_64": "2.0.4",
     "com.unity.ugui": "1.0.0",
     "com.unity.visualscripting": "1.7.8",
     "com.unity.modules.ai": "1.0.0",
@@ -49,6 +51,13 @@
       "url": "https://packages.burning-lab.com",
       "scopes": [
         "com.burning-lab"
+      ]
+    },
+    {
+      "name": "Open UPM",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.mackysoft.serializereference-extensions"
       ]
     }
   ]
