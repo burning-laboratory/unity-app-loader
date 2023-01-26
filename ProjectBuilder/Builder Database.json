@@ -7,46 +7,5 @@
         "profileName": "",
         "buildScript": ""
     },
-    "configurations": [
-        {
-            "name": "New Build Configuration",
-            "outputFolder": "",
-            "artifactName": "",
-            "buildTarget": 5,
-            "developmentBuild": false,
-            "autoConnectProfiler": false,
-            "deepProfiling": false,
-            "scriptDebugging": false,
-            "waitForManagedDebugger": false,
-            "scriptsOnlyBuild": false,
-            "compressionMethod": 0,
-            "il2CppCodeGeneration": 0,
-            "scenes": [],
-            "defines": [
-                "DEBUG_BURNING_LAB_SDK",
-                "DEBUG_APP_LOADER"
-            ],
-            "standaloneSubtarget": 0,
-            "standaloneCopyPdbFiles": false,
-            "standaloneCreateVisualStudioSolution": false,
-            "standaloneCreateXCodeProject": false,
-            "standaloneXCodeBuildConfig": 0,
-            "androidSubtarget": 0,
-            "androidETC2Fallback": 0,
-            "exportAsAndroidStudioProject": false,
-            "androidCreateSymbols": 0,
-            "symlinkSources": false,
-            "buildAndroidAppBundle": false,
-            "webGLTextureSubtarget": 0,
-            "webGlCodeOptimization": 0,
-            "iosXCodeBuildConfig": 0,
-            "companyName": "",
-            "productName": "",
-            "productVersion": "",
-            "applicationIdentifier": "",
-            "androidBundleVersionCode": 0,
-            "androidMinimumSdkVersion": 0,
-            "androidTargetSdkVersion": 0
-        }
-    ]
+    "configurations": []
 }
