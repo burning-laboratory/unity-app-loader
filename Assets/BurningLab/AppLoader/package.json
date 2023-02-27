@@ -31,5 +31,12 @@
   },
   "devDependencies": {
     "com.burning-lab.utils.js-build-utils": "^0.1.11"
-  }
+  },
+  "samples": [
+    {
+      "displayName": "Simple App With Preloader",
+      "description": "Simple application with asset implementation.",
+      "path": "Samples/Simple App"
+    }
+  ]
 }
