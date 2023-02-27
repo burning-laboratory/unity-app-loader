@@ -6,6 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Preloader.unity
+    guid: 146549346d5a7754291fedd43c5ce12d
+  - enabled: 1
+    path: Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Database.unity
+    guid: cc91cdbb522633d4cbe34c4296e996cd
+  - enabled: 1
+    path: Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Services.unity
+    guid: 9f3578342770c4446b3a7abb6268088e
+  - enabled: 1
+    path: Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Main.unity
+    guid: c08b49f5b1db2c84ab1add74edbdbcd8
   m_configObjects: {}
