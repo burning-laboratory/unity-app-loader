@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using BurningLab.AppLoader.Exceptions;
-using BurningLab.AppLoader.Stages;
+using BurningLab.ActionsPipeline;
 using BurningLab.AppLoader.Types;
 using BurningLab.AppLoader.Utils;
 using UnityEngine;
@@ -16,142 +14,152 @@ namespace BurningLab.AppLoader
     {
         #region Settings
 
-        [Header("Settings")]
+        [Header("Loading pipeline")]
         [Tooltip("Application loading pipeline.")]
-        [SerializeReference, SubclassSelector] private List<IAppLoadingStage> _loadingStages;
+        [SerializeField] private ActionPipeline _loadingPipeline;
 
-        [Tooltip("Mark object as dont destroy on load before start loading process.")]
+        [Header("Settings")] 
+        [Tooltip("Mark app loader game object as dont destroy on load.")]
         [SerializeField] private bool _dontDestroyOnLoad;
-
-        [Tooltip("Destroy app loader game object after end loading process.")]
-        [SerializeField] private bool _destroyOnCompleteLoading;
         
+        [Tooltip("Destroy app loader game object after complete loading pipeline.")]
+        [SerializeField] private bool _destroyAfterLoading;
+
         #endregion
 
-        #region Private Fields
+        #region Private Properties
 
         /// <summary>
-        /// Application loading queue.
+        /// Application loading stopwatch.
         /// </summary>
-        private Queue<IAppLoadingStage> _loadingQueue = new();
-        
-        /// <summary>
-        /// Current loading stage.
-        /// </summary>
-        private IAppLoadingStage _currentStage;
+        private Stopwatch _appLoadStopwatch;
 
-#if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
-        private Stopwatch _stopwatch;
-#endif
-        
         #endregion
+        
+        #region Public Properties
 
+        /// <summary>
+        /// Application loading progress value.
+        /// </summary>
+        /// <returns></returns>
+        public float LoadingProgress => _loadingPipeline.Progress;
+
+        #endregion
+        
         #region Events
         
         /// <summary>
-        /// Start app loading process event.
+        /// Start application loading event.
         /// </summary>
-        public event Action OnStartAppLoading;
+        public event Action OnAppLoadingPipelineStart;
         
         /// <summary>
-        /// End app loading process event.
+        /// Begin application loading pipeline stage event.
         /// </summary>
-        public event Action OnEndAppLoading;
+        public event Action<ActionPipelineStage> OnAppLoadingPipelineStageBegin;
+        
+        /// <summary>
+        /// End application loading pipeline stage event.
+        /// </summary>
+        public event Action<ActionPipelineStage> OnAppLoadingPipelineStageEnd;
+        
+        /// <summary>
+        /// Application loading complete event.
+        /// </summary>
+        public event Action<ApplicationLoadingReport> OnAppLoadingPipelineComplete;
 
-        /// <summary>
-        /// Begin app loading stage.
-        /// </summary>
-        public event Action<IAppLoadingStage> OnBeginAppLoadingStage;
-        
-        /// <summary>
-        /// End app loading stage.
-        /// </summary>
-        public event Action<IAppLoadingStage> OnEndAppLoadingStage; 
 
         #endregion
-        
+
         #region Event Handlers
 
-        /// <summary>
-        /// On app loading stage complete event handler.
-        /// </summary>
-        /// <param name="result">Loading stage result enumeration.</param>
-        private void OnStageCompleteEventHandler(LoadingStageResult result)
+        private void OnApplicationLoadingPipelineCompleteEventHandler(ActionPipelineResult result)
         {
-            _currentStage.OnComplete -= OnStageCompleteEventHandler;
-            OnEndAppLoadingStage?.Invoke(_currentStage);
+#if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
+            _totalAppLoadingStopwatch.Stop();
+            double elapsedMs = Math.Round(_totalAppLoadingStopwatch.Elapsed.TotalMilliseconds);
+            UnityConsole.PrintLog("AppLoader", "OnApplicationLoadingPipelineCompleteEventHandler", $"App loading complete in: {elapsedMs}ms.");
+#endif
             
+            _appLoadStopwatch.Stop();
+            TimeSpan loadingElapsed = _appLoadStopwatch.Elapsed;
+
+            ApplicationLoadingReport report = new ApplicationLoadingReport
+            {
+                elapsedTime = loadingElapsed
+            };
+
             switch (result)
             {
-                case LoadingStageResult.Success:
-                    if (_loadingQueue.Count != 0)
-                    {
-                        _currentStage = _loadingQueue.Dequeue();
-                        _currentStage.OnComplete += OnStageCompleteEventHandler;
-                        _currentStage.Begin();   
-                        
-                        OnBeginAppLoadingStage?.Invoke(_currentStage);
-                    }
-                    else
-                    {
-                        OnEndAppLoading?.Invoke();
-                        
-#if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
-                        UnityConsole.PrintLog("AppLoader", "OnStageCompleteEventHandler", "Application end loading.");
-                        
-                        _stopwatch.Stop();
-                        double appLoadTime = Math.Round(_stopwatch.Elapsed.TotalMilliseconds);
-                        UnityConsole.PrintLog("AppLoader", "OnStageCompleteEventHandler", $"App loading finished in: {appLoadTime}ms.");
-#endif
-                        if (_destroyOnCompleteLoading)
-                        {
-                            Destroy(gameObject);
-                        }
-                    }
+                case ActionPipelineResult.Success:
+                    report.result = ApplicationLoadingResult.Success;
                     break;
                 
-                case LoadingStageResult.Error:
-                    if (_currentStage is AppLoadingStage stage)
-                        throw new AppLoaderException($"Stage {stage.StageName} completing with result: {result}.");   
-                    
+                case ActionPipelineResult.Error:
+                    report.result = ApplicationLoadingResult.Error;
                     break;
-                
-                case LoadingStageResult.Skipped:
-                    break;
+            }
+            
+            OnAppLoadingPipelineComplete?.Invoke(report);
+            
+            if (_destroyAfterLoading)
+            {
+                Destroy(gameObject);
             }
         }
 
-        #endregion
-        
-        #region Unity Event Methods
-
-        private void Awake()
+        private void OnApplicationLoadingStageBeginEventHandler(ActionPipelineStage sender)
         {
+            
 #if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
-            UnityConsole.PrintLog("AppLoader", "Awake", "Application start loading.");
-            _stopwatch = Stopwatch.StartNew();
+            _stageStopwatch = Stopwatch.StartNew();
+            UnityConsole.PrintLog("AppLoader", "OnApplicationLoadingStageBeginEventHandler", $"Stage {sender.StageName} begin.");
 #endif
-            
-            OnStartAppLoading?.Invoke();
 
-            if (_dontDestroyOnLoad)
-                DontDestroyOnLoad(gameObject);
-
-            foreach (IAppLoadingStage stage in _loadingStages)
-                _loadingQueue.Enqueue(stage);
-    
-            _currentStage = _loadingQueue.Dequeue();
-            _currentStage.OnComplete += OnStageCompleteEventHandler;
-            _currentStage.Begin();
-            
-            OnBeginAppLoadingStage?.Invoke(_currentStage);
+            OnAppLoadingPipelineStageBegin?.Invoke(sender);
         }
 
-        private void OnDestroy()
+        private void OnApplicationLoadingPipelineEndEventHandler(ActionPipelineStage sender)
         {
+            _stageStopwatch.Stop();
+            double elapsedMs = Math.Round(_stageStopwatch.Elapsed.TotalMilliseconds);
+            UnityConsole.PrintLog("AppLoader", "OnApplicationLoadingPipelineEndEventHandler", $"Stage {sender.StageName} completed in {elapsedMs}ms..");
+
+            OnAppLoadingPipelineStageEnd?.Invoke(sender);
+        }
+
+        #endregion
+
+        #region Diagnostic
+
 #if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
-            UnityConsole.PrintLog("AppLoader", "OnDestroy", "App loader destroyed.");
+        private Stopwatch _totalAppLoadingStopwatch;
+        private Stopwatch _stageStopwatch;
 #endif
+
+        #endregion
+
+        #region Unity Event Methods
+
+        private void Start()
+        {
+            
+            _appLoadStopwatch = Stopwatch.StartNew();
+            
+#if DEBUG_APP_LOADER ||DEBUG_BURNING_LAB_SDK
+            _totalAppLoadingStopwatch = Stopwatch.StartNew();
+            UnityConsole.PrintLog("AppLoader", "Start", "Start loading application.");
+#endif
+            if (_dontDestroyOnLoad)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
+
+            _loadingPipeline.OnPipelineComplete += OnApplicationLoadingPipelineCompleteEventHandler;
+            _loadingPipeline.OnPipelineStageStart += OnApplicationLoadingStageBeginEventHandler;
+            _loadingPipeline.OnPipelineStageEnd += OnApplicationLoadingPipelineEndEventHandler;
+            
+            _loadingPipeline.RunPipeline();
         }
 
         #endregion

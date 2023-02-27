@@ -12,6 +12,10 @@ namespace BurningLab.AppLoader.Editor
         
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
+            _sceneAsset = null;
+            
+            EditorGUI.BeginProperty(position, label, property);
+            
             if (string.IsNullOrEmpty(property.stringValue) == false)
             {
                 _sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>(property.stringValue);
@@ -27,11 +31,8 @@ namespace BurningLab.AppLoader.Editor
             {
                 property.stringValue = String.Empty;
             }
-        }
-
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-        {
-            return base.GetPropertyHeight(property, label);
+            
+            EditorGUI.EndProperty();
         }
     }
 }

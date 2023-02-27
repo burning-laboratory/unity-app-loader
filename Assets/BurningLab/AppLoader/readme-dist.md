@@ -4,15 +4,15 @@
 
 <p>
     <img src="https://build.burning-lab.com/app/rest/builds/buildType:id:UnityAssets_ComBurningLabApploader_DevelopmentBuild/statusIcon.svg" alt="Build Status">
-    <a href="https://n-fridman.myjetbrains.com/youtrack/agiles/121-18/current"><img src="https://img.shields.io/badge/Roadmap-YouTrack-orange" alt="Roadmap Link"></a>
-    <img src="https://img.shields.io/badge/Engine-2020.3-blueviolet" alt="Unity Version">
-    <img src="https://img.shields.io/badge/Version-1.0.3-blue" alt="Game Version">
+    <a href="https://burning-lab.youtrack.cloud/agiles/131-18/current"><img src="https://img.shields.io/badge/Roadmap-YouTrack-orange" alt="Roadmap Link"></a>
+    <img src="https://img.shields.io/badge/Engine-{unity_version}-blueviolet" alt="Unity Version">
+    <img src="https://img.shields.io/badge/Version-{package_version}-blue" alt="Game Version">
     <img src="https://img.shields.io/badge/License-MIT-success" alt="License">
 </p>
 
 ## About
 
-Smart application loading pipeline controller.
+Smart application loading pipeline controller. With this package, you can create and manage your own application download stages.
 
 ## Installation
 
@@ -43,3 +43,22 @@ Smart application loading pipeline controller.
       ]
     }
 ```
+
+### Included stages
+
+Stages list included in package.
+
+- Game Objects stages:
+  - `InstantiateLocalGameObjectActionPipelineStage`: Instantiate Game Object Stage - Instantiate local game object.
+  - `DestroyLocalGameObjectActionPipelineStage`: Destroy Local Game Object Stage - Destroy local game object.
+
+- Scenes stages:
+  - `LoadLocalSceneActionPipelineStage`: Load Local Scene Stage - Loading local scene.
+  - `UnloadLocalSceneActionPipelineStage`: Unload Local Scene Stage - Unloading local scene.
+  - `MoveGameObjectToSceneActionPipelineStage`: Move Game Object To Scene Stage - Moving game object to scene.
+  - `MarkSceneAsActiveActionPipelineStage`: Mark Scene As Active Stage - Mark scene as active.
+
+- Misc stages:
+  - `WaitAnyKeyDownActionPipelineStage`: Wait Any Key Down Stage - Wait any key pressing or screen touch stage.
+
+

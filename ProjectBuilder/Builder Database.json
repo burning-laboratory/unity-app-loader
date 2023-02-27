@@ -26,6 +26,21 @@
                     "name": "Preloader",
                     "path": "Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Preloader.unity",
                     "guid": "146549346d5a7754291fedd43c5ce12d"
+                },
+                {
+                    "name": "Database",
+                    "path": "Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Database.unity",
+                    "guid": "cc91cdbb522633d4cbe34c4296e996cd"
+                },
+                {
+                    "name": "Services",
+                    "path": "Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Services.unity",
+                    "guid": "9f3578342770c4446b3a7abb6268088e"
+                },
+                {
+                    "name": "Main",
+                    "path": "Assets/BurningLab/AppLoader/Samples/Simple App/Scenes/Main.unity",
+                    "guid": "c08b49f5b1db2c84ab1add74edbdbcd8"
                 }
             ],
             "defines": [

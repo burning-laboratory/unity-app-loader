@@ -1,7 +1,7 @@
 {
   "dependencies": {
+    "com.burning-lab.actionspipeline": "1.0.2",
     "com.burning-lab.projectbuilder": "0.1.11-exp",
-    "com.mackysoft.serializereference-extensions": "1.1.7",
     "com.unity.collab-proxy": "1.17.2",
     "com.unity.feature.2d": "1.0.0",
     "com.unity.ide.rider": "3.0.15",
