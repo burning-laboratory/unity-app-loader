@@ -35,6 +35,10 @@
    "devDependencies": {
       "com.burning-lab.utils.js-build-utils": "^0.1.12"
    },
+  "unityDependencies": {
+    "com.burning-lab.actionspipeline": "1.0.2",
+    "com.mackysoft.serializereference-extensions": "1.1.7"
+  },
    "samples": [
       {
          "displayName": "Simple App With Preloader",
