@@ -12,7 +12,7 @@
 
 ## About
 
-Smart application loading pipeline controller. With this package, you can create and manage your own application download stages.
+Smart application loading pipeline controller. With this package, you can create and manage your own application loading stages.
 
 ## Installation
 

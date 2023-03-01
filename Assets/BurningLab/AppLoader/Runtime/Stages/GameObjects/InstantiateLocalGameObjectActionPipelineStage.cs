@@ -19,14 +19,16 @@ namespace BurningLab.AppLoader.Stages.GameObjects
         [SerializeField] private GameObject _prefab;
         
         [Header("Optional fields")]
-        [Tooltip("Optional. Target scene to instantiate game object,")]
+        [Tooltip("Optional. Target scene to instantiate game object.")]
         [SerializeField, SceneAssetField] private string _targetScene;
         
         [Tooltip("Optional. Game object parent.")]
         [SerializeField] private Transform _parent;
         
-        [Tooltip("Optional. ")]
+        [Tooltip("Optional. Game object world/local position.")]
         [SerializeField] private Vector3 _position;
+        
+        [Tooltip("Optional. Game object world/local rotation.")]
         [SerializeField] private Quaternion _rotation;
 
         #endregion
