@@ -5,11 +5,12 @@
   "description": "Application loading pipeline controller for unity projects.",
   "unity": "2021.3",
   "documentationUrl": "",
-  "changelogUrl": "",
-  "licensesUrl": "",
+  "changelogUrl": "https://github.com/burning-laboratory/unity-app-loader/releases",
+  "licensesUrl": "https://github.com/burning-laboratory/unity-app-loader/blob/main/LICENSE.txt",
+  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/burning-laboratory/unity-app-loader"
   },
   "keywords": [
     "Unity", "App", "Loader"
