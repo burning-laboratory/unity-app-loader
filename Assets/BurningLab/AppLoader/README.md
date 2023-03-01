@@ -6,13 +6,13 @@
     <img src="https://build.burning-lab.com/app/rest/builds/buildType:id:UnityAssets_ComBurningLabApploader_DevelopmentBuild/statusIcon.svg" alt="Build Status">
     <a href="https://burning-lab.youtrack.cloud/agiles/131-18/current"><img src="https://img.shields.io/badge/Roadmap-YouTrack-orange" alt="Roadmap Link"></a>
     <img src="https://img.shields.io/badge/Engine-2021.3-blueviolet" alt="Unity Version">
-    <img src="https://img.shields.io/badge/Version-0.0.2--exp-blue" alt="Game Version">
+    <img src="https://img.shields.io/badge/Version-1.0.0-blue" alt="Game Version">
     <img src="https://img.shields.io/badge/License-MIT-success" alt="License">
 </p>
 
 ## About
 
-Smart application loading pipeline controller. With this package, you can create and manage your own application download stages.
+Smart application loading pipeline controller. With this package, you can create and manage your own application loading stages.
 
 ## Installation
 
