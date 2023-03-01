@@ -1,6 +1,6 @@
-﻿{
+{
   "name": "com.burning-lab.apploader",
-  "version": "0.0.1",
+  "version": "0.0.2-exp",
   "displayName": "App Loader",
   "description": "Application loading pipeline controller for unity projects.",
   "unity": "2021.3",
