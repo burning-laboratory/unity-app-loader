@@ -26,7 +26,16 @@ namespace BurningLab.AppLoader
         [SerializeField] private bool _destroyAfterLoading;
 
         #endregion
+        
+        #region Diagnostic
 
+#if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
+        private Stopwatch _totalAppLoadingStopwatch;
+        private Stopwatch _stageStopwatch;
+#endif
+
+        #endregion
+        
         #region Private Properties
 
         /// <summary>
@@ -121,21 +130,13 @@ namespace BurningLab.AppLoader
 
         private void OnApplicationLoadingPipelineEndEventHandler(ActionPipelineStage sender)
         {
+#if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
             _stageStopwatch.Stop();
             double elapsedMs = Math.Round(_stageStopwatch.Elapsed.TotalMilliseconds);
-            UnityConsole.PrintLog("AppLoader", "OnApplicationLoadingPipelineEndEventHandler", $"Stage {sender.StageName} completed in {elapsedMs}ms..");
-
+            UnityConsole.PrintLog("AppLoader", "OnApplicationLoadingPipelineEndEventHandler", $"Stage {sender.StageName} completed in {elapsedMs}ms.");
+#endif
             OnAppLoadingPipelineStageEnd?.Invoke(sender);
         }
-
-        #endregion
-
-        #region Diagnostic
-
-#if DEBUG_APP_LOADER || DEBUG_BURNING_LAB_SDK
-        private Stopwatch _totalAppLoadingStopwatch;
-        private Stopwatch _stageStopwatch;
-#endif
 
         #endregion
 
