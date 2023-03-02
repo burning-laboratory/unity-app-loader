@@ -42,7 +42,7 @@
          "path": "Samples/Simple App"
       }
    ],
-   "dependencies": {
+   "unityDependencies": {
       "com.burning-lab.actionspipeline": "1.0.2",
       "com.mackysoft.serializereference-extensions": "1.1.7"
    }
