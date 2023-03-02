@@ -1,6 +1,6 @@
 {
    "name": "com.burning-lab.apploader",
-   "version": "1.0.1",
+   "version": "1.0.2",
    "displayName": "App Loader",
    "description": "Application loading pipeline controller for unity projects.",
    "unity": "2021.3",
@@ -42,7 +42,7 @@
          "path": "Samples/Simple App"
       }
    ],
-   "unityDependencies": {
+   "dependencies": {
       "com.burning-lab.actionspipeline": "1.0.2",
       "com.mackysoft.serializereference-extensions": "1.1.7"
    }
