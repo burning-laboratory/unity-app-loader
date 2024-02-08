@@ -31,6 +31,22 @@ namespace BurningLab.AppLoader.Stages
             Async = 1
         }
 
+        /// <summary>
+        /// Scene reload policy enumeration.
+        /// </summary>
+        private enum ReloadPolicy
+        {
+            /// <summary>
+            /// Do not reload scene if scene already loaded.
+            /// </summary>
+            Ignore = 0,
+            
+            /// <summary>
+            /// Force reload scene.
+            /// </summary>
+            ForceReload = 1,
+        }
+        
         #endregion
 
         #region Settings
@@ -44,6 +60,9 @@ namespace BurningLab.AppLoader.Stages
         [Tooltip("Scene asset load mode. Sync or async.")]
         [SerializeField] private LoadType _assetLoadMode;
 
+        [Tooltip("Scene reloading policy.")]
+        [SerializeField] private ReloadPolicy _reloadPolicy;
+        
         #endregion
 
         #region Event Handlers
@@ -76,6 +95,21 @@ namespace BurningLab.AppLoader.Stages
         {
             base.OnStart();
 
+            Scene targetScene = SceneManager.GetSceneByName(_scene);
+            if (targetScene.isLoaded)
+            {
+                switch (_reloadPolicy)
+                {
+                    case ReloadPolicy.Ignore:
+                        Next(ActionsPipelineStageResult.Skipped);
+                        break;
+                    
+                    case ReloadPolicy.ForceReload:
+                        SceneManager.UnloadSceneAsync(_scene);
+                        break;
+                }
+            }
+            
             switch (_assetLoadMode)
             {
                 case LoadType.Sync:
