@@ -108,6 +108,7 @@ namespace BurningLab.AppLoader.Stages
                         SceneManager.UnloadSceneAsync(_scene);
                         break;
                 }
+                return;
             }
             
             switch (_assetLoadMode)
