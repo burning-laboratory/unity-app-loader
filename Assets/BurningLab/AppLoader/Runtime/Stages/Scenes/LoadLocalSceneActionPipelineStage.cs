@@ -102,7 +102,7 @@ namespace BurningLab.AppLoader.Stages
                 {
                     case ReloadPolicy.Ignore:
                         Next(ActionsPipelineStageResult.Skipped);
-                        break;
+                        return;
                     
                     case ReloadPolicy.ForceReload:
                         SceneManager.UnloadSceneAsync(_scene);
