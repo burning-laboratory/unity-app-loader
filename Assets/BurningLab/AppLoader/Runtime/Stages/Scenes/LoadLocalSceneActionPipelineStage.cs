@@ -95,7 +95,7 @@ namespace BurningLab.AppLoader.Stages
         {
             base.OnStart();
 
-            Scene targetScene = SceneManager.GetSceneByName(_scene);
+            Scene targetScene = SceneManager.GetSceneByPath(_scene);
             if (targetScene.isLoaded)
             {
                 switch (_reloadPolicy)
