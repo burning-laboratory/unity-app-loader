@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine;
 
-namespace BurningLab.AppLoader.Samples.Simple_App.Scripts
+namespace BurningLab.AppLoader.Samples.SimpleApp
 {
     public class UiAppLoadingTimeDrawer : MonoBehaviour
     {

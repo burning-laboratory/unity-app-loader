@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace BurningLab.AppLoader.Samples.Simple_App.Scripts
+namespace BurningLab.AppLoader.Samples.SimpleApp.Scripts
 {
     public class UiAppLoadStageDrawer : MonoBehaviour
     {
