@@ -1,0 +1,52 @@
+{
+  "metadata": [
+    {
+      "namespaceLayout": "nested",
+      "src": [
+        {
+          "files": [
+            "Burning-Lab.AppLoader.csproj",
+            "Burning-Lab.AppLoader.Editor.csproj",
+            "Burning-Lab.AppLoader.Samples.SimpleApp.csproj"
+          ],
+          "src": ".."
+        }
+      ],
+      "dest": "api",
+      "filter": "filterConfig.yml"
+    }
+  ],
+  "build": {
+    "content": [
+      {
+        "files": [
+          "api/**.yml",
+          "api/index.md"
+        ]
+      },
+      {
+        "files": [
+          "articles/**.md",
+          "articles/**/toc.yml",
+          "toc.yml",
+          "*.md"
+        ]
+      }
+    ],
+    "resource": [
+      {
+        "files": [
+          "images/**"
+        ]
+      }
+    ],
+    "output": "_site",
+    "globalMetadataFiles": [],
+    "fileMetadataFiles": [],
+    "template": [
+      "default",
+      "modern"
+    ],
+    "postProcessors": []
+  }
+}

@@ -1,0 +1,18 @@
+﻿{
+  "manifestPath": "./package.json",
+  "readmeDistPath": "./readme-dist.md",
+  "readmeOutputPaths": [
+    "./README.md",
+    "./../../../README.md",
+    "./../../../Documentation/index.md"
+  ],
+  "unityVersionMarker": "{unity_version}",
+  "unityVersionArgumentName": "-unity",
+  "packageVersionMarker": "{package_version}",
+  "packageVersionSuffixArgumentMarker": "-suffix",
+  "unityDependenciesCacheFilename": "unity-dependencies-cache.json",
+  "unityDevelopmentSamplesFolderPath": "Samples",
+  "unityProductionSamplesFolderPath": "Samples~",
+  "unityDevelopmentSamplesFolderName": "Samples",
+  "unityProductionSamplesFolderName": "Samples~"
+}

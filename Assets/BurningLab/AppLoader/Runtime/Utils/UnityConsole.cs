@@ -5,7 +5,7 @@ namespace BurningLab.AppLoader.Utils
     /// <summary>
     /// Unity console tool.
     /// </summary>
-    public static class UnityConsole
+    internal static class UnityConsole
     {
         /// <summary>
         /// Draw log record to console.

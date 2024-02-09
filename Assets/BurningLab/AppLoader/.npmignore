@@ -9,3 +9,6 @@ package-lock.json.meta
 
 readme-dist.md
 readme-dist.md.meta
+
+unity-package-config.json
+unity-package-config.json.meta

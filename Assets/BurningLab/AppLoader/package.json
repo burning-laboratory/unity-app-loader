@@ -18,14 +18,14 @@
       "Loader"
    ],
    "scripts": {
-      "build": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/ReadmeBuilder.js",
-      "set-suffix": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/ReleaseSuffixSetter.js",
-      "clear-suffix": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/ClearVersionSuffix.js",
-      "cache-dependencies": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/DependenciesSaver.js",
-      "load-dependencies": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/DependenciesLoader.js",
-      "restore-dependencies": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/DependencyRestore.js",
-      "process-samples": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/SamplesProcessor.js",
-      "restore-samples": "node ./node_modules/com.burning-lab.utils.js-build-utils/Bin/SamplesRestore.js"
+      "build-readme": "node ./node_modules/unity-build-package-utility/ReadmeControl/BuildReadme.js -config ./unity-package-config.json",
+      "set-package-version-suffix": "node ./node_modules/unity-build-package-utility/VersionControl/SetVersionSuffix.js -config ./unity-package-config.json",
+      "clear-package-version-suffix": "node ./node_modules/unity-build-package-utility/VersionControl/ClearVersionSuffix.js -config ./unity-package-config.json",
+      "save-unity-dependencies": "node ./node_modules/unity-build-package-utility/DependenciesControl/SaveUnityDependencies.js -config ./unity-package-config.json",
+      "load-unity-dependencies": "node ./node_modules/unity-build-package-utility/DependenciesControl/LoadUnityDependencies.js -config ./unity-package-config.json",
+      "restore-unity-dependencies": "node ./node_modules/unity-build-package-utility/DependenciesControl/RestoreUnityDependencies.js -config ./unity-package-config.json",
+      "process-unity-samples": "node ./node_modules/unity-build-package-utility/SamplesControl/ProcessSamples.js -config ./unity-package-config.json",
+      "restore-unity-samples": "node ./node_modules/unity-build-package-utility/SamplesControl/RestoreSamples.js -config ./unity-package-config.json"
    },
    "author": {
       "name": "Burning-Lab",
@@ -33,7 +33,7 @@
       "url": "https://burning-lab.com"
    },
    "devDependencies": {
-      "com.burning-lab.utils.js-build-utils": "^0.1.13"
+      "unity-build-package-utility": "^0.0.1"
    },
    "samples": [
       {
